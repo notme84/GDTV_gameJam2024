@@ -25,6 +25,9 @@ public class LevelGenerator : MonoBehaviour
         if (Vector3.Distance(player.transform.position, lastEndPosition) 
                 < PLAYER_DISTANCE_SPAWN)
         {
+            Vector3 worldBlockPosition = block.TransformPoint(lastEndPosition);
+            Debug.Log(worldBlockPosition);
+            StartCoroutine(enemySpawner.SpawnEnemyWaves(worldBlockPosition));
             SpawnBlock();
 
             //TODO: destroy far old houses
@@ -50,8 +53,6 @@ public class LevelGenerator : MonoBehaviour
     {
         lastEndPosition = block.Find("EndPosition").position;
         //neighborhood.Add(block);
-        Debug.Log(lastEndPosition);
-        StartCoroutine(enemySpawner.SpawnEnemyWaves(lastEndPosition));
         return Instantiate(block, spawnPoint, Quaternion.identity);
     }
 }
