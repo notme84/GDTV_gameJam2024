@@ -8,8 +8,6 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float paddingLeft = 0.5f;
     [SerializeField] float paddingRight = 0.5f;
-    [SerializeField] float paddingTop = 0;
-    [SerializeField] float paddingBottom = 0;
 
     Vector2 rawInput;
     Vector2 minBounds;
@@ -33,8 +31,7 @@ public class Player : MonoBehaviour
         Vector2 newPos = new Vector2();
         newPos.x = Mathf.Clamp(transform.position.x + delta.x, 
             minBounds.x + paddingLeft, maxBounds.x - paddingRight);
-        newPos.y = Mathf.Clamp(transform.position.y + delta.y,
-            minBounds.y + paddingBottom, maxBounds.y - paddingTop);
+        newPos.y = transform.position.y + delta.y;
         transform.position = newPos;
     }
 
