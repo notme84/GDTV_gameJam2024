@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float paddingLeft = 0.5f;
     [SerializeField] float paddingRight = 0.5f;
+    [SerializeField] int numOfProjectiles = 20;
     [SerializeField] Sprite upperLeftsprite;
     [SerializeField] Sprite upperRightsprite;
     [SerializeField] Sprite Leftsprite;
@@ -101,9 +102,13 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        if(shooter != null)
+        if (numOfProjectiles > 0)
         {
-            shooter.isFiring = value.isPressed;
+            if(shooter != null)
+            {
+                shooter.isFiring = value.isPressed;
+                numOfProjectiles--;
+            }
         }
     }
 

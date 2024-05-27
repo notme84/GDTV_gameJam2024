@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
     
-    //TODO: Fix enemy position Y spawn issue
+    //TODO: Fix enemy world position spawn issue
     public IEnumerator SpawnEnemyWaves(UnityEngine.Vector3 position)
     {
         do
@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
                                 position,
                                 UnityEngine.Quaternion.identity,
                                 transform);
-                    Debug.Log("Block Y position: " + position);
+                    //Debug.Log("Block Y position: " + position);
                     yield return new WaitForSeconds(currentWave.GetRandomSpawnTime());
                 }
                 yield return new WaitForSeconds(timeBetweenWaves);
