@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Game Velcro.unity
+    guid: dbc17a210cac43d4aacfe7187e1f0136
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2d58abe03595b9a4b8ec4e1058d8058a, type: 2}

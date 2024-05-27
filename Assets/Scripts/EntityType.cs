@@ -9,14 +9,4 @@ public class EntityType : MonoBehaviour
 
     [SerializeField] private bool isAnimal;
     public bool _isAnimal { get { return isAnimal; } }
-
-    public virtual void StartEntity()
-    {
-
-    }
-
-    public virtual void OnHitFinishLine()
-    {
-
-    }
 }
