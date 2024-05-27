@@ -9,6 +9,7 @@ public class LevelGenerator : MonoBehaviour
     private const float PLAYER_DISTANCE_DESPAWN = 15f;
     [SerializeField] private Transform block;
     [SerializeField] private Player player;
+    [SerializeField] private EnemySpawner enemySpawner;
     List<Transform> neighborhood;
 
     private Vector3 lastEndPosition = new Vector3(0, 0, 0);
@@ -49,6 +50,8 @@ public class LevelGenerator : MonoBehaviour
     {
         lastEndPosition = block.Find("EndPosition").position;
         //neighborhood.Add(block);
+        Debug.Log(lastEndPosition);
+        StartCoroutine(enemySpawner.SpawnEnemyWaves(lastEndPosition));
         return Instantiate(block, spawnPoint, Quaternion.identity);
     }
 }

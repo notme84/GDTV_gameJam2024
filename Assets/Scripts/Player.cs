@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     Vector2 maxBounds;
     Vector2 upperLeft;
     Vector2 upperRight;
+    Vector2 up;
     Vector2 Left;
     Vector2 Right;
 
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         shooter = GetComponent<Shooter>();
         upperLeft = new Vector2(-0.71f, 0.71f);
         upperRight = new Vector2(0.71f, 0.71f);
+        up = new Vector2(0, 1);
         Left = new Vector2(-1, 0);
         Right = new Vector2(1, 0);
     }
@@ -70,7 +72,9 @@ public class Player : MonoBehaviour
         {
             shooter.isMoving = false;
         }
-        Debug.Log(rawInput);
+
+        //Debug.Log(rawInput);
+        //TODO: Player sprite directions fix UR/UL
         if (rawInput == upperLeft)
         {
             Debug.Log("UPPER LEFT!");
@@ -89,12 +93,10 @@ public class Player : MonoBehaviour
         {
             ChangeSprite(Rightsprite);
         }
-        else
+        else if (rawInput == up)
         {
             ChangeSprite(upForwardSprite);
         }
-
-        //TODO: Player sprite directions
     }
 
     void OnFire(InputValue value)

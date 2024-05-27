@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block: {fileID: 3047419983079249702, guid: de85bd3e3cddf0e469c1d7d6faebd3f4, type: 3}
   player: {fileID: 1527689360}
+  enemySpawner: {fileID: 1515375269}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +310,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cee0395594b02ed49beb9f3c0f7c8de2, type: 2}
   timeBetweenWaves: 0
   isLooping: 0
-  player: {fileID: 1527689360}
+  block: {fileID: 0}
 --- !u!1 &1527689345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6968832509522884893, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
@@ -472,6 +473,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2348114737378048977, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.53125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348114737378048977, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.71875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348114737378048977, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d9327f728e349944a8a5a37bd7177962, type: 3}
@@ -489,6 +498,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2348114737378048977, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348114737378048977, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2706028418092165021, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
@@ -561,16 +574,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: Leftsprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f541378c80e7fb847a38e24eecbd6e97, type: 3}
     - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
       propertyPath: paddingTop
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: Rightsprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d477255a2559f884dbe6d6f6ab0c08e4, type: 3}
+    - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
       propertyPath: paddingBottom
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: upForwardSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d9327f728e349944a8a5a37bd7177962, type: 3}
+    - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: upperLeftsprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dc87850d9bea889489d11fe6f2107c0c, type: 3}
+    - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: upperRightsprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7203d2f428af93448af5a264cf8918c8, type: 3}
     m_RemovedComponents:
     - {fileID: 0}
     m_RemovedGameObjects: []
