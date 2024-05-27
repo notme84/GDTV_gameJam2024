@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    private const float PLAYER_DISTANCE_SPAWN = 13f;
+    private const float PLAYER_DISTANCE_SPAWN = 15f;
     private const float PLAYER_DISTANCE_DESPAWN = 15f;
     [SerializeField] private Transform block;
     [SerializeField] private Player player;
@@ -26,7 +26,7 @@ public class LevelGenerator : MonoBehaviour
         {
             SpawnBlock();
 
-            //destroy old houses
+            //TODO: destroy far old houses
             /*foreach (Transform neighbor in neighborhood)
             {
                 if (Vector3.Distance(player.transform.position, neighbor.transform.position) 
