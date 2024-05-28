@@ -7,7 +7,10 @@ public class DistanceManager : MonoBehaviour
     public static DistanceManager Instance;
 
     // serialize field to expose in the inspector
+    [SerializeField] private TextMeshProUGUI distanceText;
     [SerializeField] private float distanceMultiplier = 50;
+    public float distanceTravelled { get; private set; }
+    private bool isTravelling = true;
 
     private void Awake()
     {
@@ -19,11 +22,6 @@ public class DistanceManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    // serialize field to expose in the inspector
-    [SerializeField] private TextMeshProUGUI distanceText;
-    private float distanceTravelled = 0;
-    private bool isTravelling = true;
 
     private void Update()
     {
@@ -37,6 +35,6 @@ public class DistanceManager : MonoBehaviour
 
     public void StartScript()
     {
-        isTravelling = false;
+        isTravelling = true;
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StartGameManager : MonoBehaviour
 {
+    [SerializeField] private ShuffleBackgroundSprites[] movingBackgrounds;
+
     private void Start()
     {
         StartGame();
@@ -14,5 +16,10 @@ public class StartGameManager : MonoBehaviour
         SpawnManager.Instance.StartSpawning();
         DistanceManager.Instance.StartScript();
         enabled = false;
+
+        foreach (ShuffleBackgroundSprites m in movingBackgrounds)
+        {
+            m.StartScript();
+        }
     }
 }

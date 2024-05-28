@@ -203,5 +203,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0f47b4e8cebae41ac240117aaaf4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityType: 2
+  entityType: 1
   isAnimal: 0

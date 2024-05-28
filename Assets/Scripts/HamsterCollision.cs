@@ -30,14 +30,8 @@ public class HamsterCollision : MonoBehaviour
                     audioManager.PlayClipByName("death");
                     FinishGameManager.Instance.FinishGame();
                     break;
-                case EntityType.EntityTypes.Cat:
-                    Debug.Log("Cat");
-                    break;
-                case EntityType.EntityTypes.Fox:
-                    Debug.Log("Fox");
-                    break;
                 default:
-                    Debug.Log("Default");
+                    Debug.Log("Default, ohh noooooooo.......");
                     break;
             }
         }

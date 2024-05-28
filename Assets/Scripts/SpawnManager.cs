@@ -4,8 +4,6 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
-    [SerializeField] private GameObject[] entitiesPrefabs;
-
     [Header("Spawn Values")]
     [SerializeField] private bool canSpawn;
     [SerializeField] private Vector3 spawnPosition;
@@ -16,9 +14,9 @@ public class SpawnManager : MonoBehaviour
     [Header("Scaling Values")]
     [SerializeField] private float scalingMultiplier = 1.0001f;
     [SerializeField] private float spawnTimerMax = 3f;
-    [SerializeField] private float scaledSpawnTimerMax = 0.5f;
-    [SerializeField] private float entitiesSpeed = 5;
-    [SerializeField] private float scaledEntitiesSpeed;
+    [SerializeField] private float scaledSpawnTimerMax = 0.8f;
+    [SerializeField] private float entitiesSpeed = 1.4f;
+    [SerializeField] private float scaledEntitiesSpeed = 18f;
     private bool maxVelocityReached;
 
     private void Awake()
@@ -63,13 +61,12 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnEntity()
     {
-        GameObject entityToSpawn = entitiesPrefabs[Random.Range(0, entitiesPrefabs.Length)];
+        GameObject entityToSpawn = GetEnemyManager.Instance.GetEnemy();
         spawnPosition.x = Random.Range(-xMargin, xMargin);
 
 
         GameObject spawnedEntity = Instantiate(entityToSpawn, spawnPosition, Quaternion.identity);
         spawnedEntity.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -entitiesSpeed);
-        //spawnedEntity.GetComponent<EntityType>().StartEntity();
     }
 
     private void IncreaseSpeed()
@@ -97,24 +94,5 @@ public class SpawnManager : MonoBehaviour
             if (e.TryGetComponent(out Rigidbody2D entityRB))
                 entityRB.velocity = new Vector2(entityRB.velocity.x, -entitiesSpeed);
         }
-    }
-
-    public void ActivateHeadstart(float speedMultiplier)
-    {
-        maxVelocityReached = true;
-        spawnTimerMax = scaledSpawnTimerMax / speedMultiplier;
-        spawnTimer = spawnTimerMax;
-        entitiesSpeed = scaledEntitiesSpeed * speedMultiplier;
-    }
-
-    public void EndHeadstart()
-    {
-        spawnTimerMax = scaledSpawnTimerMax;
-        entitiesSpeed = scaledEntitiesSpeed;
-    }
-
-    public void ChangeCanSpawnTo(bool value)
-    {
-        canSpawn = value;
     }
 }
