@@ -23,8 +23,10 @@ public class FinishGameManager : MonoBehaviour
 
     public void FinishGame()
     {
-        Time.timeScale = 0;
-        gameOverPanel.SetActive(true);
+        //Load game over scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
+        //Time.timeScale = 0;
+        //gameOverPanel.SetActive(true);
     }
 
     public void RestartGame()
