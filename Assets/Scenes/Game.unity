@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 885112364}
   - component: {fileID: 885112367}
   - component: {fileID: 885112366}
+  - component: {fileID: 885112368}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -575,9 +576,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canSpawn: 0
-  spawnPosition: {x: 0, y: 6, z: 1}
+  spawnPosition: {x: 4, y: 6, z: 1}
   spawnTimer: 0
   xMargin: 8
+  xPosToTheRight: 4
   scalingMultiplier: 1.0002
   spawnTimerMax: 3
   scaledSpawnTimerMax: 0.8
@@ -677,6 +679,27 @@ MonoBehaviour:
   - {fileID: 9204865962128063958, guid: 3c1150feba3e53b4fbe0049f5cd1bdca, type: 3}
   - {fileID: 9204865962128063958, guid: 8132627548c165c45ae4c0194a9361aa, type: 3}
   - {fileID: 9204865962128063958, guid: 19cbf368206c1cf4290240e10da4eedd, type: 3}
+--- !u!114 &885112368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885112358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d34cdebbf6f60ee4d963e278255c1a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesPrefabs:
+  - {fileID: 986547258436392546, guid: 14f8a01567264b24f97078f3c2bd92d7, type: 3}
+  - {fileID: 986547258436392546, guid: 549581ef9f2f87149ae54adb0d269731, type: 3}
+  - {fileID: 986547258436392546, guid: 18c0def5f062a704fbd0447f91f2c4ee, type: 3}
+  - {fileID: 986547258436392546, guid: 8fd2d013ad0e4e24ab99f2d6ca342ac9, type: 3}
+  spawnPosition: {x: 0, y: 14, z: 0}
+  scalingMultiplier: 1.0001
+  entitiesSpeed: 2.5
+  scaledEntitiesSpeed: 18
 --- !u!1001 &1091502895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -728,6 +751,10 @@ PrefabInstance:
     - target: {fileID: 8045971039899193139, guid: 1c88400ddb606564f97d28aa39267c87, type: 3}
       propertyPath: m_Name
       value: Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045971039899193139, guid: 1c88400ddb606564f97d28aa39267c87, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8964410322764825796, guid: 1c88400ddb606564f97d28aa39267c87, type: 3}
       propertyPath: player

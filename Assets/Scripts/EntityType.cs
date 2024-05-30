@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityType : MonoBehaviour
 {
-    public enum EntityTypes { Life, Hurt, Death, Newspapers}
+    public enum EntityTypes { Life, Hurt, Death, Newspapers, House}
     public EntityTypes entityType;
 
     [SerializeField] private bool isAnimal;

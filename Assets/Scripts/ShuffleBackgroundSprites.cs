@@ -21,7 +21,10 @@ public class ShuffleBackgroundSprites : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.timeScale);
 
         if (transform.position == destination)
+        {
             transform.position = positionToGoBackTo;
+            HouseSpawnManager.Instance.SpawnHouse();
+        }
 
         if (isSpeedingUp)
         {

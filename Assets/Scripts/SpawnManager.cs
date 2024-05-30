@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private Vector3 spawnPosition;
     [SerializeField] private float spawnTimer;
     [SerializeField] private float xMargin = 8;
+    [SerializeField] private float xPosToTheRight = 4;
 
 
     [Header("Scaling Values")]
@@ -62,8 +63,8 @@ public class SpawnManager : MonoBehaviour
     private void SpawnEntity()
     {
         GameObject entityToSpawn = GetEnemyManager.Instance.GetEnemy();
-        spawnPosition.x = Random.Range(-xMargin, xMargin);
 
+        spawnPosition.x = Random.Range(-xMargin, xMargin) + xPosToTheRight;
 
         GameObject spawnedEntity = Instantiate(entityToSpawn, spawnPosition, Quaternion.identity);
         spawnedEntity.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -entitiesSpeed);
