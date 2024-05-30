@@ -3,7 +3,12 @@ guid: 7a84441aa26102444838a66bffe046b0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - upperLeftsprite: {fileID: 21300000, guid: 08e6662cf9845d24baec36c684e91bd2, type: 3}
+  - upperRightsprite: {fileID: 21300000, guid: 4f4f7be492eef664d895450ffbb2924e, type: 3}
+  - Leftsprite: {fileID: 21300000, guid: dc87850d9bea889489d11fe6f2107c0c, type: 3}
+  - Rightsprite: {fileID: 21300000, guid: f7d04946616990e4d86cec876a17eaad, type: 3}
+  - upForwardSprite: {fileID: 21300000, guid: d9327f728e349944a8a5a37bd7177962, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

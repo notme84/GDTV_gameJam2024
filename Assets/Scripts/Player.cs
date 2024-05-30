@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -10,11 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingLeft = 0.5f;
     [SerializeField] float paddingRight = 0.5f;
     [SerializeField] int numOfProjectiles = 20;
+    [SerializeField] float projectileCooldown = 1.5f;
     [SerializeField] Sprite upperLeftsprite;
     [SerializeField] Sprite upperRightsprite;
     [SerializeField] Sprite Leftsprite;
     [SerializeField] Sprite Rightsprite;
     [SerializeField] Sprite upForwardSprite;
+    [SerializeField] TextMeshProUGUI paperCountText;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     SpriteRenderer spriteRenderer;
     Vector2 rawInput;
@@ -25,6 +29,9 @@ public class Player : MonoBehaviour
     Vector2 up;
     Vector2 Left;
     Vector2 Right;
+    int playerScore = 0;
+    float paperTimer;
+    bool canShoot = true;
 
     Shooter shooter;
 
@@ -43,6 +50,9 @@ public class Player : MonoBehaviour
         InitBounds();
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
         upForwardSprite = spriteRenderer.sprite;
+        scoreText.text = playerScore.ToString();
+        paperCountText.text = numOfProjectiles.ToString();
+        paperTimer = projectileCooldown;
     }
 
     void InitBounds()
@@ -60,6 +70,17 @@ public class Player : MonoBehaviour
             minBounds.x + paddingLeft, maxBounds.x - paddingRight);
         newPos.y = transform.position.y + delta.y;
         transform.position = newPos;
+        /*if(!canShoot)
+        {
+            Debug.Log("delta time: " + Time.deltaTime);
+            Debug.Log("paper cooldown timer: " + paperTimer.ToString());
+            paperTimer -= Time.deltaTime;
+            if(paperTimer < 0)
+            {
+                paperTimer = projectileCooldown;
+                canShoot = true;
+            }
+        }*/
     }
 
     void OnMove(InputValue value)
@@ -102,12 +123,24 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue value)
     {
+        
+        /*if (numOfProjectiles > 0 && paperTimer == projectileCooldown)
+        {
+            if(shooter != null && canShoot)
+            {
+                shooter.isFiring = value.isPressed;
+                numOfProjectiles--;
+                paperCountText.text = numOfProjectiles.ToString();
+                canShoot = false;
+            }
+        }*/
         if (numOfProjectiles > 0)
         {
             if(shooter != null)
             {
                 shooter.isFiring = value.isPressed;
                 numOfProjectiles--;
+                paperCountText.text = numOfProjectiles.ToString();
             }
         }
     }
@@ -115,5 +148,15 @@ public class Player : MonoBehaviour
     void ChangeSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
+    }
+
+    public int GetProjectileCount()
+    {
+        return numOfProjectiles;
+    }
+
+    public void SetProjectileCount(int num)
+    {
+        numOfProjectiles = num;
     }
 }

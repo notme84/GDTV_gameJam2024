@@ -8,7 +8,7 @@ public class SpawnDestroyer : MonoBehaviour
     {
         if (other.CompareTag("Entity"))
         {
-            Debug.Log("Entity destoyed");
+            //Debug.Log("Entity destoyed");
             Destroy(other.gameObject);
         }
     }
