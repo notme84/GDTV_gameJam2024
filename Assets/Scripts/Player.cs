@@ -120,14 +120,14 @@ public class Player : MonoBehaviour
                     audioManager.PlayClipByName("increase");
                     playerLives++;
                     livesText.text = playerLives.ToString();
-                    Debug.Log("Life increases");
+                    //Debug.Log("Life increases");
                     Destroy(other.gameObject);
                     break;
                 case EntityType.EntityTypes.Hurt:
                     audioManager.PlayClipByName("decrease");
                     playerLives--;
                     livesText.text = playerLives.ToString();
-                    Debug.Log("Hurt");
+                    //Debug.Log("Hurt");
                     if(playerLives<= 0)
                     {
                         FinishGameManager.Instance.FinishGame();
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
                 case EntityType.EntityTypes.Newspapers:
                     audioManager.PlayClipByName("increase");
                     AddProjectileCount(5);
-                    Debug.Log("More Paper");
+                    //Debug.Log("More Paper");
                     break;
                 default:
                     Debug.Log("Default, ohh noooooooo.......");

@@ -337,6 +337,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2193486818175388458, guid: cc2790c917aab074e8e93f1f0e9ac59a, type: 3}
   m_PrefabInstance: {fileID: 1246736109943843461}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &477586480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4724009286231019434, guid: cc2790c917aab074e8e93f1f0e9ac59a, type: 3}
+  m_PrefabInstance: {fileID: 1246736109943843461}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,9 +2642,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 477586480}
+    - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
       propertyPath: moveSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
+      propertyPath: paperText
+      value: 
+      objectReference: {fileID: 1940153091}
     - target: {fileID: 8160045925151368237, guid: 55f511cc21c4b824fb8aed968ad7fef4, type: 3}
       propertyPath: scoreText
       value: 
