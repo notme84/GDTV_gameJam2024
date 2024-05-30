@@ -7,18 +7,14 @@ using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] int playerLives = 3;
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float paddingLeft = 0.5f;
     [SerializeField] float paddingRight = 0.5f;
     [SerializeField] int numOfProjectiles = 20;
-    [SerializeField] float projectileCooldown = 1.5f;
-    [SerializeField] Sprite upperLeftsprite;
-    [SerializeField] Sprite upperRightsprite;
-    [SerializeField] Sprite Leftsprite;
-    [SerializeField] Sprite Rightsprite;
-    [SerializeField] Sprite upForwardSprite;
-    [SerializeField] TextMeshProUGUI paperCountText;
+    [SerializeField] TextMeshProUGUI paperText;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI livesText;
 
     SpriteRenderer spriteRenderer;
     Vector2 rawInput;
@@ -30,9 +26,7 @@ public class Player : MonoBehaviour
     Vector2 Left;
     Vector2 Right;
     int playerScore = 0;
-    float paperTimer;
-    bool canShoot = true;
-
+    private AudioManager audioManager;
     Shooter shooter;
 
     void Awake()
@@ -49,10 +43,10 @@ public class Player : MonoBehaviour
     {
         InitBounds();
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-        upForwardSprite = spriteRenderer.sprite;
         scoreText.text = playerScore.ToString();
-        paperCountText.text = numOfProjectiles.ToString();
-        paperTimer = projectileCooldown;
+        paperText.text = numOfProjectiles.ToString();
+        livesText.text = playerLives.ToString();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void InitBounds()
@@ -70,17 +64,6 @@ public class Player : MonoBehaviour
             minBounds.x + paddingLeft, maxBounds.x - paddingRight);
         newPos.y = transform.position.y + delta.y;
         transform.position = newPos;
-        /*if(!canShoot)
-        {
-            Debug.Log("delta time: " + Time.deltaTime);
-            Debug.Log("paper cooldown timer: " + paperTimer.ToString());
-            paperTimer -= Time.deltaTime;
-            if(paperTimer < 0)
-            {
-                paperTimer = projectileCooldown;
-                canShoot = true;
-            }
-        }*/
     }
 
     void OnMove(InputValue value)
@@ -94,60 +77,20 @@ public class Player : MonoBehaviour
         {
             shooter.isMoving = false;
         }
-
-        //Debug.Log(rawInput);
-        //TODO: Player sprite directions fix UR/UL
-        if (rawInput == upperLeft)
-        {
-            Debug.Log("UPPER LEFT!");
-            ChangeSprite(upperLeftsprite);
-        }
-        else if (rawInput == upperRight)
-        {
-            Debug.Log("UPPER RIGHT!");
-            ChangeSprite(upperRightsprite);
-        }
-        else if (rawInput == Left)
-        {
-            ChangeSprite(Leftsprite);
-        }
-        else if (rawInput == Right)
-        {
-            ChangeSprite(Rightsprite);
-        }
-        else if (rawInput == up)
-        {
-            ChangeSprite(upForwardSprite);
-        }
     }
 
     void OnFire(InputValue value)
     {
-        
-        /*if (numOfProjectiles > 0 && paperTimer == projectileCooldown)
-        {
-            if(shooter != null && canShoot)
-            {
-                shooter.isFiring = value.isPressed;
-                numOfProjectiles--;
-                paperCountText.text = numOfProjectiles.ToString();
-                canShoot = false;
-            }
-        }*/
         if (numOfProjectiles > 0)
         {
             if(shooter != null)
             {
                 shooter.isFiring = value.isPressed;
                 numOfProjectiles--;
-                paperCountText.text = numOfProjectiles.ToString();
+                Debug.Log("projectile count: " + numOfProjectiles);
+                paperText.text = numOfProjectiles.ToString();
             }
         }
-    }
-
-    void ChangeSprite(Sprite sprite)
-    {
-        spriteRenderer.sprite = sprite;
     }
 
     public int GetProjectileCount()
@@ -155,8 +98,55 @@ public class Player : MonoBehaviour
         return numOfProjectiles;
     }
 
-    public void SetProjectileCount(int num)
+    public void AddProjectileCount(int num)
     {
-        numOfProjectiles = num;
+        numOfProjectiles += num;
+        paperText.text = numOfProjectiles.ToString();
+    }
+
+    public void SetScore(int score)
+    {
+        playerScore = score;
+        scoreText.text = playerScore.ToString();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Entity"))
+        {
+            switch (other.GetComponent<EntityType>().entityType)
+            {
+                case EntityType.EntityTypes.Life:
+                    audioManager.PlayClipByName("increase");
+                    playerLives++;
+                    livesText.text = playerLives.ToString();
+                    Debug.Log("Life increases");
+                    Destroy(other.gameObject);
+                    break;
+                case EntityType.EntityTypes.Hurt:
+                    audioManager.PlayClipByName("decrease");
+                    playerLives--;
+                    livesText.text = playerLives.ToString();
+                    Debug.Log("Hurt");
+                    if(playerLives<= 0)
+                    {
+                        FinishGameManager.Instance.FinishGame();
+                        break;
+                    }
+                    break;
+                case EntityType.EntityTypes.Death:
+                    audioManager.PlayClipByName("death");
+                    FinishGameManager.Instance.FinishGame();
+                    break;
+                case EntityType.EntityTypes.Newspapers:
+                    audioManager.PlayClipByName("increase");
+                    AddProjectileCount(5);
+                    Debug.Log("More Paper");
+                    break;
+                default:
+                    Debug.Log("Default, ohh noooooooo.......");
+                    break;
+            }
+        }
     }
 }

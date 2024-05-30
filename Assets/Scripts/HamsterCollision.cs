@@ -30,6 +30,11 @@ public class HamsterCollision : MonoBehaviour
                     audioManager.PlayClipByName("death");
                     FinishGameManager.Instance.FinishGame();
                     break;
+                case EntityType.EntityTypes.Newspapers:
+                    audioManager.PlayClipByName("increase");
+                    
+                    Debug.Log("More Paper");
+                    break;
                 default:
                     Debug.Log("Default, ohh noooooooo.......");
                     break;
