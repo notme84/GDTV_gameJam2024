@@ -815,7 +815,7 @@ MonoBehaviour:
   - {fileID: 986547258436392546, guid: 18c0def5f062a704fbd0447f91f2c4ee, type: 3}
   - {fileID: 986547258436392546, guid: 8fd2d013ad0e4e24ab99f2d6ca342ac9, type: 3}
   spawnPosition: {x: 0, y: 14, z: 0}
-  scalingMultiplier: 1.0001
+  scalingMultiplier: 1
   entitiesSpeed: 2.5
   scaledEntitiesSpeed: 18
 --- !u!82 &885112369
@@ -825,7 +825,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885112358}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d95d32b12754e7341a32771e10d2bd07, type: 3}

@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingRight = 0.5f;
     [SerializeField] int numOfProjectiles = 20;
     [SerializeField] TextMeshProUGUI paperText;
-    [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI livesText;
 
     SpriteRenderer spriteRenderer;
@@ -25,7 +24,6 @@ public class Player : MonoBehaviour
     Vector2 up;
     Vector2 Left;
     Vector2 Right;
-    int playerScore = 0;
     private AudioManager audioManager;
     Shooter shooter;
 
@@ -43,7 +41,6 @@ public class Player : MonoBehaviour
     {
         InitBounds();
         spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
-        scoreText.text = playerScore.ToString();
         paperText.text = numOfProjectiles.ToString();
         livesText.text = playerLives.ToString();
         audioManager = FindObjectOfType<AudioManager>();
@@ -102,12 +99,6 @@ public class Player : MonoBehaviour
     {
         numOfProjectiles += num;
         paperText.text = numOfProjectiles.ToString();
-    }
-
-    public void SetScore(int score)
-    {
-        playerScore = score;
-        scoreText.text = playerScore.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

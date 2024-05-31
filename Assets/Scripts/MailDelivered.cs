@@ -8,7 +8,6 @@ public class MailDelivered : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite mailDeliveredSprite;
     [SerializeField] private Sprite mailNotDeliveredSprite;
-
     [SerializeField] private bool mailDelivered;
 
 
@@ -23,9 +22,6 @@ public class MailDelivered : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-
-
-
 
     // function to change the sprite from one to another
     public void ChangeSprite(bool mailDelivered)
