@@ -9,6 +9,7 @@ public class MailDelivered : MonoBehaviour
     [SerializeField] private Sprite mailDeliveredSprite;
     [SerializeField] private Sprite mailNotDeliveredSprite;
     [SerializeField] private bool mailDelivered;
+    [SerializeField] private AudioSource audioSource;
 
 
     // ontrigger enter to check if the this object has collided with the mail
@@ -27,9 +28,8 @@ public class MailDelivered : MonoBehaviour
     public void ChangeSprite(bool mailDelivered)
     {
         spriteRenderer.sprite = mailDelivered ? mailDeliveredSprite : mailNotDeliveredSprite;
-        if (mailDelivered)
-        {
-            //GetComponent<AudioSource>().Play();
-        }
+        //check if there is an audio source attached to the object
+        if (audioSource != null)
+            audioSource.Play();
     }
 }

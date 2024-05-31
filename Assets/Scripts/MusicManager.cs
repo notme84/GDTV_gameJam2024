@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class MusicManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class MusicManager : MonoBehaviour
     public struct SceneMusic
     {
         public string sceneName; // Name of the scene
-        public AudioClip song; // Song to play in the scene
+        public List<AudioClip> songs; // List of songs to randomly play in the scene
     }
 
     public List<SceneMusic> sceneMusics; // List of scene-specific music
@@ -33,7 +34,6 @@ public class MusicManager : MonoBehaviour
 
         // Initialize AudioSource component
         audioSource = GetComponent<AudioSource>();
-        audioSource.loop = false; // Ensure looping is off initially
     }
 
     void Start()
@@ -55,7 +55,7 @@ public class MusicManager : MonoBehaviour
         PlaySceneMusic(currentSceneName);
     }
 
-    // Method to play music for the current scene
+    // Method to play random music for the current scene
     void PlaySceneMusic(string sceneName)
     {
         // Find the corresponding music for the scene
@@ -63,10 +63,17 @@ public class MusicManager : MonoBehaviour
         {
             if (sceneMusic.sceneName == sceneName)
             {
-                // Set and play the music
-                audioSource.clip = sceneMusic.song;
-                audioSource.Play();
-                return;
+                // Randomly select a song from the list
+                if (sceneMusic.songs.Count > 0)
+                {
+                    int randomIndex = Random.Range(0, sceneMusic.songs.Count);
+                    AudioClip randomSong = sceneMusic.songs[randomIndex];
+                    // Set the randomly selected song to loop and play it
+                    audioSource.clip = randomSong;
+                    audioSource.loop = true; // Set loop to true
+                    audioSource.Play();
+                    return;
+                }
             }
         }
         // If no music is found for the scene, stop playing

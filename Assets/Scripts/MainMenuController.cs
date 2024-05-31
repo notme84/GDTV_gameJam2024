@@ -10,23 +10,25 @@ public class MainMenuController : MonoBehaviour
     void Start()
     {
         // get the audio source component
-
-
+        audioSource = GetComponent<AudioSource>();
     }
+
     public void StartGame()
     {
         //play the click sound
-        //GetComponent<AudioSource>().Play();
+        PlaySound();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
     public void OpenSettings()
     {
+        PlaySound();
         UnityEngine.SceneManagement.SceneManager.LoadScene("OptionsMenuScene");
     }
 
     public void QuitGame()
     {
+        PlaySound();
 #if (UNITY_EDITOR || DEVELOPMENT_BUILD)
         Debug.Log(this.name + " : " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
 #endif
@@ -41,18 +43,18 @@ public class MainMenuController : MonoBehaviour
 
     public void MusicButton()
     {
-        
+        PlaySound();
     }
 
     public void MainMenuButton()
     {
+        PlaySound();
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
-    void PlayClickSound()
+    void PlaySound()
     {
         // Play the assigned click sound
         audioSource.Play();
     }
-
 }

@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
@@ -108,10 +105,10 @@ public class Player : MonoBehaviour
             switch (other.GetComponent<EntityType>().entityType)
             {
                 case EntityType.EntityTypes.Life:
-                    audioManager.PlayClipByName("increase");
+                    audioManager.PlayClipByName("Increase");
                     playerLives++;
                     livesText.text = playerLives.ToString();
-                    //Debug.Log("Life increases");
+                    Debug.Log("Life increases");
                     Destroy(other.gameObject);
                     break;
                 case EntityType.EntityTypes.Hurt:
@@ -126,13 +123,13 @@ public class Player : MonoBehaviour
                     }
                     break;
                 case EntityType.EntityTypes.Death:
-                    audioManager.PlayClipByName("death");
+                    audioManager.PlayClipByName("Punch");
                     FinishGameManager.Instance.FinishGame();
                     break;
                 case EntityType.EntityTypes.Newspapers:
-                    audioManager.PlayClipByName("increase");
+                    audioManager.PlayClipByName("Increase");
                     AddProjectileCount(5);
-                    //Debug.Log("More Paper");
+                    Destroy(other.gameObject);
                     break;
                 default:
                     Debug.Log("Default, ohh noooooooo.......");

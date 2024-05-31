@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
             s.audioSource.pitch = s.pitch;
             s.audioSource.loop = s.loop;
             s.audioSource.playOnAwake = s.playOnAwake;
+            s.audioSource.spatialBlend = 0f;
 
             if (s.playOnAwake)
             {
@@ -33,6 +34,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + clipName + " not found!");
             return;
         }
+        s.audioSource.spatialBlend = 0f;
         s.audioSource.Play();
     }
 
