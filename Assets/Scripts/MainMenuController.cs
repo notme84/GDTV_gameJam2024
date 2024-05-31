@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // get the audio source component
+
+
     }
     public void StartGame()
     {
+        //play the click sound
+        //GetComponent<AudioSource>().Play();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
@@ -43,6 +49,10 @@ public class MainMenuController : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
-
+    void PlayClickSound()
+    {
+        // Play the assigned click sound
+        audioSource.Play();
+    }
 
 }
