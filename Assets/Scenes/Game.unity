@@ -270,34 +270,26 @@ MonoBehaviour:
   sounds:
   - audioSource: {fileID: 0}
     audioClips:
-    - {fileID: 8300000, guid: cb33d689fa04d7341bd7755b81884ee3, type: 3}
-    clipName: spinningNewspaper
+    - {fileID: 8300000, guid: 60f99d42c272d6e45920e0ae1c5741f9, type: 3}
+    clipName: Increase
     volume: 1
-    pitch: 0
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+  - audioSource: {fileID: 0}
+    audioClips:
+    - {fileID: 8300000, guid: 0f72918bcca32984784c3c9ad1274123, type: 3}
+    clipName: decrease
+    volume: 1
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - audioSource: {fileID: 0}
     audioClips:
     - {fileID: 8300000, guid: e2a43b18e17839a4b93008bed843cd89, type: 3}
-    clipName: Punch
+    clipName: punch
     volume: 1
-    pitch: 0
-    playOnAwake: 0
-    loop: 0
-  - audioSource: {fileID: 0}
-    audioClips:
-    - {fileID: 8300000, guid: 3e525322c7a47c3468bcdb42a68452c1, type: 3}
-    clipName: click
-    volume: 1
-    pitch: 0
-    playOnAwake: 0
-    loop: 0
-  - audioSource: {fileID: 0}
-    audioClips:
-    - {fileID: 8300000, guid: 811d560978f1f664ab47908f8cdf6f50, type: 3}
-    clipName: confirmation
-    volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - audioSource: {fileID: 0}
@@ -310,18 +302,10 @@ MonoBehaviour:
     loop: 0
   - audioSource: {fileID: 0}
     audioClips:
-    - {fileID: 8300000, guid: 60f99d42c272d6e45920e0ae1c5741f9, type: 3}
-    clipName: Increase
+    - {fileID: 8300000, guid: 67a9d63356071af4a9031dc28bb25e57, type: 3}
+    clipName: Paper
     volume: 1
-    pitch: 0
-    playOnAwake: 0
-    loop: 0
-  - audioSource: {fileID: 0}
-    audioClips:
-    - {fileID: 8300000, guid: 0f72918bcca32984784c3c9ad1274123, type: 3}
-    clipName: decrease
-    volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
 --- !u!224 &477586479 stripped

@@ -58,6 +58,7 @@ MonoBehaviour:
   - sceneName: GameOverScene
     songs:
     - {fileID: 8300000, guid: e5cedfc65434f9a4f8aa667f52a63457, type: 3}
+    - {fileID: 8300000, guid: af5dd0f0e75b4b14eb56cde1e75cfdd1, type: 3}
   audioSource: {fileID: 8573969085848433836}
 --- !u!82 &8573969085848433836
 AudioSource:

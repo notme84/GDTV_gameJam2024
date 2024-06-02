@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        // get the audio manager
         shooter = GetComponent<Shooter>();
         upperLeft = new Vector2(-0.71f, 0.71f);
         upperRight = new Vector2(0.71f, 0.71f);
@@ -81,7 +83,7 @@ public class Player : MonoBehaviour
             {
                 shooter.isFiring = value.isPressed;
                 numOfProjectiles--;
-                Debug.Log("projectile count: " + numOfProjectiles);
+                //Debug.Log("projectile count: " + numOfProjectiles);
                 paperText.text = numOfProjectiles.ToString();
             }
         }
@@ -108,26 +110,26 @@ public class Player : MonoBehaviour
                     audioManager.PlayClipByName("Increase");
                     playerLives++;
                     livesText.text = playerLives.ToString();
-                    Debug.Log("Life increases");
                     Destroy(other.gameObject);
                     break;
                 case EntityType.EntityTypes.Hurt:
+                    Debug.Log("Hurt");
                     audioManager.PlayClipByName("decrease");
                     playerLives--;
                     livesText.text = playerLives.ToString();
-                    //Debug.Log("Hurt");
-                    if(playerLives<= 0)
+                    if (playerLives <= 0)
                     {
                         FinishGameManager.Instance.FinishGame();
                         break;
                     }
                     break;
                 case EntityType.EntityTypes.Death:
-                    audioManager.PlayClipByName("Punch");
+                    Debug.Log("Death");
                     FinishGameManager.Instance.FinishGame();
                     break;
                 case EntityType.EntityTypes.Newspapers:
-                    audioManager.PlayClipByName("Increase");
+                    audioManager.PlayClipByName("Paper");
+                    Debug.Log("More Paper");
                     AddProjectileCount(5);
                     Destroy(other.gameObject);
                     break;
@@ -137,4 +139,6 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+
 }
