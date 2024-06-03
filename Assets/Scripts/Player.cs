@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
             {
                 shooter.isFiring = value.isPressed;
                 numOfProjectiles--;
-                //Debug.Log("projectile count: " + numOfProjectiles);
+                Debug.Log("projectile count: " + numOfProjectiles);
                 paperText.text = numOfProjectiles.ToString();
             }
         }
@@ -113,7 +113,6 @@ public class Player : MonoBehaviour
                     Destroy(other.gameObject);
                     break;
                 case EntityType.EntityTypes.Hurt:
-                    Debug.Log("Hurt");
                     audioManager.PlayClipByName("decrease");
                     playerLives--;
                     livesText.text = playerLives.ToString();
