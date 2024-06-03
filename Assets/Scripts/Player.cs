@@ -93,6 +93,10 @@ public class Player : MonoBehaviour
                 paperText.text = numOfProjectiles.ToString();
             }
         }
+        else
+        {
+            FinishGameManager.Instance.FinishGame();
+        }
     }
 
     public int GetProjectileCount()
@@ -135,7 +139,7 @@ public class Player : MonoBehaviour
                 case EntityType.EntityTypes.Newspapers:
                     audioManager.PlayClipByName("Paper");
                     Debug.Log("More Paper");
-                    AddProjectileCount(5);
+                    AddProjectileCount(1);
                     Destroy(other.gameObject);
                     break;
                 default:
