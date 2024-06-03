@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FinishGameManager : MonoBehaviour
 {
     //singleton pattern
     public static FinishGameManager Instance;
+    [SerializeField] TextMeshProUGUI scoreText;
+    int playerScore = 0;
 
 
     [SerializeField] private GameObject gameOverPanel;
@@ -21,6 +24,11 @@ public class FinishGameManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        scoreText.text = playerScore.ToString();
+    }
+
     public void FinishGame()
     {
         //Load game over scene
@@ -32,8 +40,16 @@ public class FinishGameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1;
+        playerScore = 0;
+        scoreText.text = playerScore.ToString();
         gameOverPanel.SetActive(false);
         // Load the active scene in the build settings
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ScorePoints()
+    {
+        playerScore += 100;
+        scoreText.text = playerScore.ToString();
     }
 }

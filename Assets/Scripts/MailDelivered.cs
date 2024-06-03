@@ -11,13 +11,13 @@ public class MailDelivered : MonoBehaviour
     [SerializeField] private bool mailDelivered;
     [SerializeField] private AudioSource audioSource;
 
-
     // ontrigger enter to check if the this object has collided with the mail
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Mail"))
         {
             mailDelivered = true;
+            FinishGameManager.Instance.ScorePoints();
             ChangeSprite(mailDelivered);
             //destroy the colliding object
             Destroy(collision.gameObject);

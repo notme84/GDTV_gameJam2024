@@ -791,6 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e26923da8b24c46835ee0143eda2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 2025068545}
   gameOverPanel: {fileID: 1217802089}
 --- !u!114 &885112362
 MonoBehaviour:

@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -60,6 +61,11 @@ public class Player : MonoBehaviour
             minBounds.x + paddingLeft, maxBounds.x - paddingRight);
         newPos.y = transform.position.y + delta.y;
         transform.position = newPos;
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ThrowPaper();
+        }
     }
 
     void OnMove(InputValue value)
@@ -75,13 +81,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnFire(InputValue value)
+    void ThrowPaper()
     {
         if (numOfProjectiles > 0)
         {
             if(shooter != null)
             {
-                shooter.isFiring = value.isPressed;
+                shooter.isFiring = true;
                 numOfProjectiles--;
                 Debug.Log("projectile count: " + numOfProjectiles);
                 paperText.text = numOfProjectiles.ToString();
@@ -138,6 +144,4 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-
 }
